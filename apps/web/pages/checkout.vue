@@ -25,6 +25,8 @@
           <PreferredDelivery v-if="countryHasDelivery" />
           <CheckoutPayment :disabled="disableShippingPayment" @update:active-payment="handlePaymentMethodUpdate" />
         </div>
+
+        <CheckoutSubscriptionProducts v-if="isMollieSelected" />
         <UiDivider class="w-screen md:w-auto -mx-4 md:mx-0 mb-10" />
         <CheckoutGeneralTerms />
       </div>
@@ -49,6 +51,8 @@
 <script setup lang="ts">
 import { SfLoaderCircular } from '@storefront-ui/vue';
 import { AddressType } from '@plentymarkets/shop-api';
+import { computed } from 'vue';
+import { useCheckout } from '~/composables/useCheckout';
 
 definePageMeta({
   layout: 'simplified-header-and-footer',
@@ -56,6 +60,7 @@ definePageMeta({
   middleware: ['reject-empty-checkout'],
 });
 
+import axios from 'axios';
 const { send } = useNotification();
 const { t } = useI18n();
 const localePath = useLocalePath();
@@ -63,8 +68,16 @@ const { emit } = usePlentyEvent();
 const { countryHasDelivery } = useCheckoutAddress(AddressType.Shipping);
 const { cart, cartIsEmpty, cartLoading, persistShippingAddress, persistBillingAddress } = useCheckout();
 
-const { loadPayment, loadShipping, handleShippingMethodUpdate, handlePaymentMethodUpdate } =
+const { loadPayment, loadShipping, handleShippingMethodUpdate, handlePaymentMethodUpdate, paymentMethods } =
   useCheckoutPagePaymentAndShipping();
+
+const isMollieSelected = computed(() => {
+  if (!cart.value || !paymentMethods.value?.list) return false;
+  const selected = paymentMethods.value.list.find(
+    (pm) => pm.id === cart.value.methodOfPaymentId
+  );
+  return selected?.key === 'Mollie';
+});
 
 emit('frontend:beginCheckout', cart.value);
 
@@ -107,5 +120,29 @@ watch(cartIsEmpty, async () => {
     send({ type: 'neutral', message: t('emptyCartNotification') });
     await navigateTo(localePath(paths.cart));
   }
+});
+
+
+async function verifySubscriptions() {
+  try {
+    const productIds = cart?.value?.items?.map(item => item.variationId) || [];
+    
+    if (!productIds.length) {
+      return false;
+    }
+    const { data } = await axios.post('/rest/orders-subscription/verify-products', {
+      productIds
+    });
+    
+    return data.hasSubscription;
+  } catch (error) {
+    console.error('Error checking subscriptions:', error);
+    return false;
+  }
+}
+
+// You can call this when needed, for example:
+onMounted(async () => {
+  const hasSubscriptionItems = await verifySubscriptions();
 });
 </script>
