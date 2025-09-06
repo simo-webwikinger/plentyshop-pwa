@@ -207,6 +207,62 @@
       "section": {
         "myWishlist": "Meine Wunschliste"
       }
+    },
+    "subscriptions": {
+      "section": {
+        "mySubscriptions": "Meine Abonnements"
+      },
+      "emptySubscriptions": "Ihre aktiven Abonnements werden hier angezeigt",
+      "details": {
+        "subscriptionId": "Abonnement-ID",
+        "orderDate": "Bestelldatum",
+        "total": "Preis",
+        "status": "Status",
+        "recurrence": "Lieferkondition",
+        "disable": "Abonnement deaktivieren",
+        "disabling": "Wird deaktiviert...",
+        "listCaption": "Liste der Abonnements",
+        "actions": "Aktionen",
+        "recurrence_interval": {
+          "1_month": "monatlich",
+          "3_months": "vierteljährlich",
+          "6_months": "halbjährlich",
+          "12_months": "jährlich",
+          "2_weeks": "alle zwei Wochen",
+          "1_week": "wöchentlich",
+          "1_days": "täglich"
+        },
+        "status_options": {
+          "active": "Aktiv",
+          "disabled": "Deaktiviert"
+        }
+      },
+      "confirmSubscription": {
+        "title": "Abonnement bestätigen",
+        "message": "Möchten Sie Ihr Abonnement akzeptieren und aktivieren?",
+        "yes": "Ja",
+        "no": "Nein"
+      },
+      "disableSuccess": "Abonnement deaktiviert erfolgreich"
+    },
+    "subscription": {
+      "subscriptionDetails": "Abonnementdetails",
+      "loading": "Wird geladen...",
+      "price": "Preis",
+      "quantity": "Menge",
+      "total": "Gesamt",
+      "status": "Status",
+      "orderDate": "Bestelldatum",
+      "recurrenceInterval": "Wiederholungsintervall",
+      "recurrenceCount": "Anzahl der Wiederholungen",
+      "nextOrderDate": "Nächstes Bestelldatum",
+      "subscriptionTotal": "Abonnement Gesamt",
+      "notFound": "Abonnement nicht gefunden",
+      "failedToFetch": "Fehler beim Abrufen des Abonnements",
+      "transactions": {
+        "title": "Transaktionen",
+        "empty": "Keine Transaktionen gefunden."
+      }
     }
   },
   "addProductToWishlist": "{label} zur Wunschliste hinzufügen",
@@ -1140,5 +1196,31 @@
     "addedToBasket": "Erfolgreich zum Warenkorb hinzugefügt",
     "generateUrl": "Warenkorb speichern",
     "CopiedSuccesfully": "URL erfolgreich kopiert"
-  }
+  },
+  "subscription": {
+    "subscriptionDetails": "Abonnementdetails",
+    "loading": "Wird geladen...",
+    "price": "Preis",
+    "quantity": "Menge",
+    "total": "Gesamt",
+    "status": "Status",
+    "orderDate": "Bestelldatum",
+    "recurrenceInterval": "Lieferintervall",
+    "recurrenceCount": "Lieferanzahl",
+    "nextOrderDate": "Nächstes Bestelldatum",
+    "subscriptionTotal": "Abonnement Gesamt",
+    "subscriptionPrice": "Abonnement Preis",
+    "notFound": "Abonnement nicht gefunden",
+    "failedToFetch": "Fehler beim Abrufen des Abonnements",
+    "transactions": {
+      "title": "Transaktionen",
+      "empty": "Keine Transaktionen gefunden."
+    }
+  },
+  "SubscriptionProducts": "Abonnement Einstellung",
+  "SelectAll": "Alle auswählen",
+  "SubscriptionInterval": "Lieferintervall",
+  "NumberofPayments": "Anzahl an Lieferungen",
+  "UntilCanceled": "Unbegrenzt",
+  "payments": "Lieferungen"
 }
