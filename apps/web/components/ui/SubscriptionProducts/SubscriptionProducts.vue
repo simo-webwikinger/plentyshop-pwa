@@ -17,8 +17,6 @@
               ref="img"
               :src="addModernImageExtension(cartItemImage) || '/images/placeholder.png'"
               :alt="cartGetters.getItemName(cartItem)"
-              width=""
-              height=""
               loading="lazy"
               class="w-full h-auto" />
             <SfLoaderCircular v-if="!imageLoaded" class="absolute" size="sm" />
@@ -82,11 +80,9 @@
                 :to="localePath(productBundleGetters.getBundleItemUrl(item))"
                 variant="secondary"
                 class="no-underline typography-text-sm">
-              </SfLink>
-              <p class="text-sm" v-else>
                 {{ productBundleGetters.getBundleItemQuantity(item) }}x
                 <span class="px-1 h-">{{ productBundleGetters.getBundleItemName(item) }}</span>
-              </p>
+              </SfLink>
             </div>
           </div>
         </div>
@@ -104,8 +100,9 @@
 <script setup lang="ts">
 import { productGetters, productBundleGetters, cartGetters } from '@plentymarkets/shop-api';
 import { SfLink, SfLoaderCircular } from '@storefront-ui/vue';
-import type { CartProductCardProps } from '~/components/ui/CartProductCard/types';
+import type { CartProductCardProps } from '~/components/ui/SubscriptionProducts/types';
 import type { Product } from '@plentymarkets/shop-api';
+const NuxtLink = resolveComponent('NuxtLink');
 
 interface Props extends CartProductCardProps {
   isSelected?: boolean;
@@ -150,8 +147,6 @@ const cartItemImage = computed(() => {
   }
   return '';
 });
-
-const NuxtLink = resolveComponent('NuxtLink');
 
 const basePriceSingleValue = computed(
   () =>
