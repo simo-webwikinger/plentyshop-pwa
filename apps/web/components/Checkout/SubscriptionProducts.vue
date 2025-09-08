@@ -15,7 +15,7 @@
       </label>
     </div>
     <div v-for="(cartItem, index) in subscriptionProducts" :key="cartItem.variationId">
-      <SubscriptionProducts
+      <ProductSubscription
         :cart-item="cartItem" 
         :class="{ 'border-t': index === 0 }"
         :is-selected="selectedSubscriptions.isSelected(cartItem.variationId)"

@@ -100,7 +100,7 @@
 <script setup lang="ts">
 import { productGetters, productBundleGetters, cartGetters } from '@plentymarkets/shop-api';
 import { SfLink, SfLoaderCircular } from '@storefront-ui/vue';
-import type { CartProductCardProps } from '~/components/SubscriptionProducts/types';
+import type { CartProductCardProps } from '~/components/ProductSubscription/types';
 import type { Product } from '@plentymarkets/shop-api';
 const NuxtLink = resolveComponent('NuxtLink');
 
