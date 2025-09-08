@@ -15,12 +15,12 @@
       </label>
     </div>
     <div v-for="(cartItem, index) in subscriptionProducts" :key="cartItem.variationId">
-      <!-- <SubscriptionProducts
+      <UiCartProductSubscription
         :cart-item="cartItem" 
         :class="{ 'border-t': index === 0 }"
         :is-selected="selectedSubscriptions.isSelected(cartItem.variationId)"
         @toggle-selection="handleToggleSelection"
-      /> -->
+      />
     </div>
 
     <div class="mb-4">
@@ -133,13 +133,6 @@ const loadSubscriptionProducts = async () => {
     console.error('Error loading subscription products:', error);
   }
 };
-
-// Watch for cart changes and reload subscription products
-watch(() => cart.value?.items, () => {
-  if (cart.value?.items?.length) {
-    loadSubscriptionProducts();
-  }
-}, { immediate: true });
 
 onMounted(() => {
   if (cart.value?.items?.length) {
