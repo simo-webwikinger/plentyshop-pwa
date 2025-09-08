@@ -15,12 +15,12 @@
       </label>
     </div>
     <div v-for="(cartItem, index) in subscriptionProducts" :key="cartItem.variationId">
-      <SubscriptionProducts
+      <!-- <SubscriptionProducts
         :cart-item="cartItem" 
         :class="{ 'border-t': index === 0 }"
         :is-selected="selectedSubscriptions.isSelected(cartItem.variationId)"
         @toggle-selection="handleToggleSelection"
-      />
+      /> -->
     </div>
 
     <div class="mb-4">
