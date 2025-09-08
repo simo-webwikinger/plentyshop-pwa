@@ -85,7 +85,6 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    '~/modules/proxy-server',
     '@plentymarkets/shop-core',
     '@plentymarkets/shop-module-mollie',
     '@plentymarkets/shop-module-gtag',
