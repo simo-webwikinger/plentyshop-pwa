@@ -59,6 +59,7 @@
 import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
 import { SfCheckbox } from '@storefront-ui/vue';
+import ProductSubscription from '~/components/ProductSubscription/ProductSubscription.vue';
 import type { CartItem } from '@plentymarkets/shop-api';
 import { cartGetters } from '@plentymarkets/shop-api';
 import { useSelectedSubscriptions } from '~/composables/useSelectedSubscriptions';
